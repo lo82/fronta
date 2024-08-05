@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="container container_edit">
+    <div></div>
+      <div class="card-body">
+          <div class="m-auto text-center">
+            <h3 class="card-title" style="text-align:center;">
+              Asistencia
+            </h3>
+          </div>
+        </div>
+
+
+
+<table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;" *ngIf="date === date ">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>chica</th>
+        <th>Fecha</th>
+        <th>total pagado</th>
+
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let asistencia of asistencia">
+       
+        <td>{{asistencia.id}}</td>
+        <td>{{asistencia.usuario.nombre}}</td>
+        <td>{{asistencia.hora_entrada}}</td>
+        <td>{{asistencia.total_horaextra}}</td>
+        
+      </tr>
+    </tbody>
+</table>
+
+
+  
+</div>
+
+

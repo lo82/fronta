@@ -1,0 +1,66 @@
+
+<app-header></app-header>
+    <app-nav *ngIf="isLogged;"></app-nav>
+<div *ngIf="isLogged; else loggedOut">
+  <div>
+    <div class="main-container">
+      <div class="container">
+       <h2> Nombre : {{nombre}}</h2>
+        <h2 style="color: crimson;">¿Qué desea hacer?</h2>
+    
+        <div class = "btn-group-justified ">
+          <div class="col-sm-4"></div>
+          <button type = "button" class = "btn btn-lg btn-secondary mb-2 me-2 espacio" (click)="openModalClientes()">Trago</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-lg btn-outline-primary mb-2 me-2" (click)="openEnd(content)">Menú complementario</button>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+
+<div class="col-sm-1 col-offset-5">
+  <button class="btn btn-warning col-sm-4 row adaptar" (click)='volver()' role="button">Volver</button>
+</div>
+
+
+
+
+
+
+<ng-template #loggedOut>
+  <div class="container" style="background: black;">
+    <img class="img" src="assets\images.jpg"  >  
+  </div>
+  <div class="text-center" style="background-color: brown;">
+ <h1  style="color:white"> Lo siento no has iniciado sesión</h1> 
+ <a style="color:white" [routerLink]="['/login']">vuelva a la app con este link</a>
+</div>
+
+</ng-template>
+
+<ng-template #content let-offcanvas>
+	<div class="offcanvas-header bg-warning">
+		<h4 class="offcanvas-title">Acciones</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+	</div>
+	<div class="offcanvas-body">
+   
+    <button type = "button" class = "btn btn-secondary espacio" (click)="openModalComision()" >Comisiones</button>
+    &nbsp;&nbsp;
+    <button type="button" class = "btn btn-secondary espacio" (click)="openModalAdelanto()">Adelantos</button>
+    &nbsp;&nbsp;
+    <button type="button" class = "btn btn-secondary espacio" (click)="openModalBonificacion()">Bonificación</button>
+		<br><br>
+    <button type="button" class = "btn btn-secondary espacio" (click)="openModalServicio()">Servicio</button>
+
+	</div>
+</ng-template>

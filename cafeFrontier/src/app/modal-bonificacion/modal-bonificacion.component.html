@@ -1,0 +1,28 @@
+<div class="modal-header" #modalone="bs-modal" bsModal>
+    <h4 class="modal-title pull-left">Agregue la bonificación correspondiente </h4>
+  
+  </div>
+  
+  <div class="modal-body">
+   
+    <div >
+      <form [formGroup]="datosForm" (ngSubmit)="onSubmit()">
+  
+  
+        <label for="fname">Valor Bonificación</label>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')"   id="vSer" name="vSer" class="form-control" [(ngModel)]="vSer" formControlName="vSer"/>
+        <div *ngIf="datosForm.controls['vSer'].invalid && (datosForm.controls['vSer'].dirty || datosForm.controls['vSer'].touched)" class="alert alert-danger">
+          <div *ngIf=" datosForm.get('vSer')?.errors?.['required']">
+            El valor del adelanto es requerido.
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success bg-success" [disabled]="!datosForm.valid" (click)="crearBono()">Aceptar</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger bg-danger" (click)="modalRef.hide()">Cerrar
+    </button>
+  </div>

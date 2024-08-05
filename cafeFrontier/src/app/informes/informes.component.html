@@ -1,0 +1,106 @@
+<app-header></app-header>
+    <app-nav></app-nav>
+<div class="container container_edit">
+    <div class="card-body">
+        <div class="m-auto text-center">
+          <h3 class="card-title" style="text-align:center;">
+            Listado de Informes
+          </h3>
+        </div>
+      </div>
+<div  class="form-group row">
+  <label class="control-label col-sm-2" for="nombre" >Ingreso Fechas: </label>
+    <form >
+        <label>
+          Ingrese fecha desde:
+          <input type="date" name="fecha1" [(ngModel)]="fecha1" />
+          Ingrese fecha hasta:
+          <input type="date" name="fecha2" [(ngModel)]="fecha2"/>
+          <br>
+          chicas:
+          <select name="piezas" class="form-select sm" [(ngModel)]="usei" >
+            <option  *ngFor="let item of user" [ngValue]="item.id">{{item.nombreUsuario}}</option>
+          </select>
+        
+
+        </label>
+      </form>
+    <div class="col-sm-10 col-offset-5">
+      <button class="btn btn-success" role="button" (click)='informe()' >Buscar</button>
+  </div>
+</div>  
+
+<div id="htmlData" >
+  <br><br><br><br><br><br><br><br>  
+
+  
+    <div class="horizontal" >
+      <div *ngFor="let acciones of acciones">
+   
+      </div>
+      <div> 
+        
+        <table id="tg-SgBHZ" class="table table-striped mover"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+          <h2> {{fecha1}}</h2>
+            <tr>
+              <th class="tg-g1fv" colspan="2">Nombre de anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomision}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicio}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20 + totalTrago30 + totalTrago40 + totalcomision + totalServicio}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelanto}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20 + totalTrago30 + totalTrago40 + totalcomision + totalServicio + adelanto}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+    </div>
+  
+</div>
+  
+<div>
+  <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
+</div>
+
+<div class="col-sm-1 col-offset-5">
+  <button class="btn btn-secondary" (click)='volver()' role="button">Volver</button>
+</div>

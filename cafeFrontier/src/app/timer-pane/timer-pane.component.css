@@ -1,0 +1,6 @@
+.display {
+    text-align: center;
+  }
+  .display__time-left {
+    font-size: 48px;
+  }

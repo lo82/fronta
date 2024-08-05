@@ -1,0 +1,14 @@
+.card{
+
+    width: 1300px;
+    height: 1300px;
+    position: absolute;
+    margin: 0px;
+    left: 90px;
+    
+}
+
+.inp{
+    width : 56px;
+    height : 36px;
+}

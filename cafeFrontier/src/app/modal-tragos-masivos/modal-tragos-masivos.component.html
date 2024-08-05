@@ -1,0 +1,77 @@
+<div class="fondo">
+<button type="button" class="bg-danger btn-close" aria-label="Close" (click)="modalRef.hide()" ></button>
+
+    <h4 class="hfondo">Tragos Masivos</h4>
+    
+
+
+    <div >
+  <p class="text-center">Chicas disponibles</p>
+  <div *ngFor="let row of users" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+
+    <div class="btn-group me-1" role="group" aria-label="First group">
+        <table style="width:200px;">
+            <tr *ngIf="row.estado === 'activo' && row.tipo=== 'anfritriona' ">
+            
+                  
+                  <input id="che"  class="chk_sel_box chk_all_style" type="checkbox" value="{{row.id}}" #inputBox (change)="onCategoriaPressed(row.id,inputBox?.checked)"  (click)="enableDisable()">
+              {{ row.nombre}} 
+          
+            </tr>    
+        </table>
+    </div>
+
+  
+
+
+
+</div>
+
+
+<p>¿Qué cliente desea agregar a la venta?</p>
+
+<select name="miselect" [(ngModel)]="seleccionados" class="form-select sm">
+    <option [value]="item" *ngFor="let item of client" [value]="item.id">{{item.nombre_cliente}}</option>
+  </select>
+<br><br><br>
+<button type="button" [disabled]="isDisabled" #myButton  style="aling-items: center;justify-content: center"  class="align-items-center btn btn-danger bg-danger" (click)="veinte()"  >$20.000</button>
+&nbsp;
+<button type="button" [disabled]="isDisabled" style="aling-items: center;justify-content: center" class="align-items-center btn btn-danger bg-danger"  (click)="treinta()" >$30.000</button>
+&nbsp;
+<button type="button" [disabled]="isDisabled" style="aling-items: center;justify-content: center" class="align-items-center btn btn-danger bg-danger"  (click)="cuarenta()" >$40.000</button>
+<br>
+<br>
+</div>
+
+
+
+</div>
+
+<div *ngIf="treint == true">
+
+  <h4 class="modal-title pull-left">Seleccione el lugar donde van a estar</h4>
+  <select name="piezas" id="piezas" class="form-select sm" [(ngModel)]="pie" >
+    <option [value]="item" *ngFor="let item of listaNumeros">{{item}}</option>
+  </select>
+
+
+  <button type="button"  style="aling-items: center;justify-content: center" class="align-items-center btn btn-danger bg-danger"  (click)="tre()" >$30.000</button>
+  &nbsp;
+
+
+</div>
+
+<div *ngIf="cuarent == true">
+
+  <h4 class="modal-title pull-left">Seleccione el lugar donde van a estar</h4>
+  <select name="piezas" id="piezas" class="form-select sm" [(ngModel)]="pies" >
+    <option [value]="item" *ngFor="let item of listaNumeros">{{item}}</option>
+  </select>
+
+
+  <button type="button" style="aling-items: center;justify-content: center" class="align-items-center btn btn-danger bg-danger"  (click)="cua()" >$40.000</button>
+  &nbsp;
+
+
+</div>

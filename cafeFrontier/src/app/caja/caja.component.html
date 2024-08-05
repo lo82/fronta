@@ -1,0 +1,96 @@
+<!--app-header></app-header-->
+<app-header></app-header>
+    <app-nav></app-nav>
+    <br>
+    <button *ngIf='bdcaja?.length>0' class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Bajar PDF</button>
+  <br>
+<div class="container container_edit " id="htmlData">
+  <div></div>
+    <div class="card-body">
+    
+        <div class="m-auto text-center">
+          
+          <h3 *ngIf='bdcaja?.length>0' class="card-title" style="text-align:center;">
+           Caja
+          </h3>
+          <br>
+          <img class="img" src="assets\images.jpg" style="width: 90px;">
+        </div>
+      </div>
+      <br>
+<div *ngIf='bdcaja?.length == 0' class="form-group row">
+  <label class="control-label col-sm-2" for="nombre" >Ingreso Caja: </label>
+  <div class="col-sm-4 col-offset-2">
+      <input type="text" class="form-control" [(ngModel)]="totaldia.ingreso_caja" name="ingreso_caja" required minlength="4"  #ingreso_caja="ngModel">   
+    </div>
+    <div class="col-sm-10 col-offset-5">
+      <button class="btn btn-success" role="button" (click)='creardia()' >Ingresar</button>
+  </div>
+</div>  
+
+<div class="card-body">
+  <div class="m-auto text-center">
+  
+    <h3 *ngIf='bdcaja?.length>0' class="card-title" style="text-align:center;">
+      Resumen total {{fechatitulo}}
+    </h3>
+  </div>
+</div>
+  <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;" *ngIf='bdcaja?.length>0'>
+    <thead>
+      <tr>
+        <th class="tg-zdip"></th>
+        <th class="tg-32v3" colspan="3">total caja</th>
+        <th class="tg-zdip" colspan="2">Propinas</th>
+        <th class="tg-zdip" colspan="3">egreso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-266k">caja</td>
+        <td class="tg-266k">efectivo</td>
+        <td class="tg-266k">tarjeta</td>
+        <td class="tg-266k">transferencia</td>
+        <td class="tg-266k">efectivo</td>
+        <td class="tg-266k">tarjeta</td>
+        <td class="tg-266k">servicios</td>
+        <td class="tg-266k">adelanto</td>
+
+      </tr>
+      <tr *ngFor="let cierre of cierre">
+        <td class="tg-0lax">{{bdcaja}}</td>
+        <td class="tg-0lax">{{totalE}}</td>
+        <td class="tg-0lax">{{totalTar}}</td>
+        <td class="tg-0lax">{{totalTrs}}</td>
+        <td class="tg-0lax">{{propinaE}}</td>
+        <td class="tg-0lax">{{propinaT}}</td>
+        <td class="tg-0lax">{{totalSer}}</td>
+        <td class="tg-0lax">{{bono}}</td>
+
+        
+   
+      </tr>
+      </tbody>
+  </table>
+
+  
+
+
+<br>
+<div *ngIf='bdcaja?.length>0' class="card text-center border-info">
+  <div class="card-body">
+    <h1  class="card-title">Total = {{totalcaja}}</h1>
+  </div>
+</div> 
+<div >
+  <h1></h1>
+</div>
+
+</div>
+
+<div class="col-sm-1 col-offset-5">
+  <button class="btn btn-secondary" (click)='volver()' role="button">Volver</button>
+</div>
+<div class="col-sm-10 col-offset-5">
+  <button class="btn btn-danger" role="button" (click)="findia()" >Cerrar caja</button>
+</div>

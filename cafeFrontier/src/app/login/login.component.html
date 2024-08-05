@@ -1,0 +1,42 @@
+<div *ngIf="isLogged; else loggedOut">
+
+</div>
+
+<ng-template #loggedOut >
+  <section class="vh-100"  style="background-color:#141414;" >
+    <div class="container py-5 h-100 ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;background-color:#495dcf;">
+            <div class="card-body p-5 text-center">
+
+              <span><img class="imagen" src="assets\images.jpg" style="width: 100px;" ></span>
+              <h3 class="mb-5" style="color:white;">Iniciar Sesion</h3>
+
+              <form name="form" [formGroup]="datosForm"  #f="ngForm" novalidate (ngSubmit)="onLogin()">
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="nombreUsuario" style="color:white;">Nombre de Usuario: </label>
+                  <input type="text" class="form-control" name="nombreusuario" [(ngModel)]="nombreUsuario" formControlName="nombreUsuario"
+                  autocomplete="off" required>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="password" style="color:white;">Contraseña: </label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="password" formControlName="password"
+                    autocomplete="off" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-danger" (click)="click()" [disabled]="!f.valid">Login</button>
+                  <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Fail al loguearse: {{ errorMsg }}</div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</ng-template>

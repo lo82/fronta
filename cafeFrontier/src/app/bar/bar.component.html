@@ -1,0 +1,150 @@
+<!--app-header></app-header-->
+<app-header></app-header>
+    <app-nav ></app-nav>
+
+<div>
+    <button class="btn btn-secondary" (click)='volver()' role="button">Volver</button>
+
+</div>
+
+
+    <accordion [isAnimated]="true"> 
+      <accordion-group heading="Bar tragos" [isOpen]="open">
+        <button  class="btn btn-dark " role="button" (click)="modalActivas()"   >Servicio</button>
+        <div class="modal-body">
+
+          <table class="table table-data">
+            <thead>
+            <tr>
+            <th><button class="btn btn-success"(click)="openModalTresMil()" >$3.000</button></th>
+            <th><button class="btn btn-success"(click)="openModaCuatroMil()" >$4.000</button></th>
+            <th><button class="btn btn-success" (click)="openModalCincoMil()" >$5.000</button></th>
+            <th><button class="btn btn-success" (click)="openModaDiezMil()" >$10.000</button></th>
+            <th><button class="btn btn-success" (click)="openModalDoceMil() " >$12.000</button></th>
+            <th><button class="btn btn-success" (click)="openModaQuinceMil()" >$15.000</button></th>
+              <th><button class="btn btn-success" (click)="openModalDieciochoMil()" >$18.000</button></th>
+              <th><button class="btn btn-success" (click)="openModalVeinteMil()" >$20.000</button></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+
+            </tr>
+            </tfoot>
+
+            </table>
+            <table class="table table-data">
+              <thead>
+              <tr>
+
+
+              </tr>
+              </thead>
+              <tfoot></tfoot>
+              <tbody>
+                         </tbody>
+              </table>
+
+              <table class="table table-data">
+                <thead>
+                <tr>
+                <th><button class="btn btn-success" (click)="openModalTreintaMil()" >$30.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalCincuentail()" >$50.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalSesentaMil()" >$60.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalOchentaMil()" >$80.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalCientoVeinteMil()" >$120.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalCientoCincuentaMil()" >$150.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalCientoOchentaMil()" >$180.000</button></th>
+                <th><button class="btn btn-success" (click)="openModalOchocientosMil()" >$800.000</button></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                </tr>
+                </tfoot>
+                <tbody>
+
+
+                </tbody>
+                </table>
+
+
+            </div>
+
+
+      </accordion-group>
+    </accordion>
+    <accordion [isAnimated]="true">
+      <accordion-group heading="tragos vendidos en el bar" [isOpen]="opens">
+
+        <div class="modal-body">
+
+          <table class="table table-striped text-center" >
+            <thead>
+              <tr>
+                <th></th>
+                <th>descripción</th>
+                <th>precio</th>
+                <th>Cantidad</th>
+                <th>fecha</th>
+                <th>tipo de pago</th>
+                <th>estado</th>
+             
+           
+              
+
+
+              </tr>
+            </thead>
+
+            <tbody *ngFor="let accion of accione" >
+              <tr *ngIf="accion.usuario.nombre=== 'bar'">
+                <td style="text-align:center;"><input class="chk_sel_box chk_all_style" type="checkbox"
+                  [(ngModel)]="accion.checked" [checked]="idecito" (click)="seleccionid(accion.usuario.id)"
+                  (keypress)="seleccionado(accion.id)" value="{{accion.id}}" id="numero" #inputBox
+                  (change)="onCategoriaPressed(accion.total_ganado,inputBox?.checked)"></td>
+                <td>{{accion.tragos !=undefined ? accion.tragos.nombre_trago:'' || accion.tipo_accion}}</td>
+                <td>{{accion.total_ganado}}</td>
+                <td>{{accion.cantidad}}</td>
+                <td>{{accion.fecha_dia}}</td>
+                <td>{{accion.tipo_pago}}</td>
+                <td>{{accion.estado}}</td>
+               
+             
+            
+
+
+
+              </tr>
+
+            </tbody>
+
+          </table>
+          <h2>total:{{total2}}</h2>
+ 
+
+            </div>
+
+
+      </accordion-group>
+    </accordion>
+    <accordion [isAnimated]="true">
+        <accordion-group heading="Champañas" [isOpen]="openi">
+
+          <div class="modal-body">
+
+              <button style="aling-items: center;justify-content: center" #closebutton class=" color align-items-center" (click)="openModal()" > $ 120.000</button>
+              &nbsp;
+              <button style="aling-items: center;justify-content: center" class=" color align-items-center" (click)="openModal2()" > $ 160.000</button>
+              &nbsp;
+              <button style="aling-items: center;justify-content: center" #closebutton class=" color align-items-center" (click)="openModal3()" > $ 200.000</button>
+              &nbsp;
+              <button style="aling-items: center;justify-content: center" class=" color align-items-center" (click)="openModal4()" > $ 240.000</button>
+              &nbsp;
+
+
+              </div>
+
+
+        </accordion-group>
+      </accordion>

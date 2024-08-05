@@ -1,0 +1,90 @@
+<app-header></app-header>
+    <app-nav></app-nav>
+<div class="container container_edit">
+    <div class="card-body">
+      <div class="m-auto text-center">
+        <h3 class="card-title" style="text-align:center;">
+          Activar Anfritionas
+
+        </h3>
+      </div>
+    </div>
+
+    <div *ngIf='usuarios?.length == 0' class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;">
+        <thead>
+          <tr>
+
+            <th>imagen</th>
+            <th>Rut</th>
+            <th>Nombre fantasia</th>
+            <th>Primer Nombre</th>
+            <th>Segundo Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Email</th>
+            <th>Estado</th>
+            <th>Estado civil</th>
+            <th>Dirección</th>
+            <th>AFP</th>
+            <th>Imposiciones</th>
+            <th>Administrar</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let usuario of usuarios">
+          <tr *ngIf=" usuario.tipo === 'anfritriona' || usuario.tipo === 'bailarina' " >
+            <td><img *ngIf="usuario?.foto" src="http://localhost:8080/api/uploads/img/{{usuario.foto}}" alt="{{usuario.foto}}" class="img-thumbnail round"
+              style="width: 64px;">
+              <img *ngIf="!usuario?.foto" src="http://localhost:8080/img/nouser.png" alt="sinfoto" class="img-thumbnail round"
+              style="width: 64px;"></td>
+              <td>{{usuario.rut}}</td>
+              <td>{{usuario.nombreUsuario}}</td>
+              <td>{{usuario.nombre}}</td>
+              <td>{{usuario.nombre_segundo}}</td>
+              <td>{{usuario.apellido}}</td>
+              <td>{{usuario.apellido_segundo}}</td>
+              <td>{{usuario.email}}</td>
+              <td>{{usuario.estado}}</td>
+              <td>{{usuario.estado_civil}}</td>
+              <td>{{usuario.direccion}}</td>
+              <td>{{usuario.afp}}</td>
+              <td>{{usuario.imposiciones}}</td>
+          
+
+            <td >
+              <button type="button" name="editar" [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                &nbsp;
+                <button type="button" name="editar" (click)="actualizar(usuario.id)" class="btn btn-success"><i class="fa fa-edit"></i>Activar</button>
+                &nbsp;
+                <button type="button" name="editar" (click)="aceptar(usuario.id)" class="btn btn-danger">Desactivar</button>
+                &nbsp;
+                <button type="button" name="eliminar" (click)='delete(usuario)' class="btn btn-danger"><i class="fa fa-times"></i></button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-1 col-offset-5">
+
+      <button class="btn btn-rounded btn-success perfil" routerLink="/usuarios/form"><i class="fa fa-plus fa-lg"></i><br>Crear Perfiles</button>
+  </div>
+    <br>
+</div>
+
+
+<h2>Finger Print</h2>
+<p>probando Lectura de huellas dactilares</p>
+
+<div>
+<br>
+  
+  <br>
+  <div>
+    <div>
+      <p>Imagen Base</p>
+      <img style="display:block;width:100px;height:100px;" id="base64image"src='data:image/jpeg;base64;{{currentImageFinger}}' >
+    </div>
+  </div>
+</div>
+

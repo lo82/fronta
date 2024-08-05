@@ -1,0 +1,366 @@
+<!--app-header></app-header-->
+<!--app-nav></app-nav-->
+<div>
+  <div *ngIf="isLogged; else loggedOut">
+    <app-header></app-header>
+    <app-nav *ngIf="isLogged;">
+
+    </app-nav>
+    <!--nav class="navbar navbar-expand-lg navmenu">
+      <a class="btn boton cerrar" style="color: whitesmoke" (click)="cerrar()">Cerrar</a>
+      <span class="text-center"><img class="img" src="assets\images.jpg" style="width: 100px;"></span>
+      <h2 class="text-center" style="color: white" *ngIf="roles[0] == 'ROLE_ADMIN' ">
+        Las Muñecas De Ramón</h2>
+      <h2 class="text-center" style="color: white">
+      </h2>
+      &nbsp;
+      <button class="btn btn-success float-md-right boton" *ngIf="roles[0] == 'ROLE_ADMIN' ">Bar</button>
+
+      
+    </nav-->
+    <!--nav class="navbara navbar-expand-sm bg-whait navbar-dark" style="background-color: #000000;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          
+          <li class="itm_men nav-item active">
+            <a *ngIf="roles[0] === 'ROLE_ADMIN' " class="itm_a nav-link" style="color: white;" routerLink="/usuario"><i class="fa fa-user-circle"></i> Usuario</a>
+          </li>
+          <li class="itm_men nav-item active">
+            <a *ngIf="roles[0] === 'ROLE_ADMIN' " class="itm_a nav-link" style="color: white;" routerLink="/caja"><i class="fa fa-cash-register"></i> Caja</a>
+          </li>
+          <li class="itm_men nav-item active">
+            <a *ngIf="roles[0] === 'ROLE_ADMIN' " class="itm_a nav-link" style="color: white;" routerLink="/bar"><i class="fa fa-glass"></i> Bar</a>
+          </li>
+          <li class="itm_men nav-item active">
+            <a *ngIf="roles[0] === 'ROLE_ADMIN' " class="itm_a nav-link" style="color: white;" routerLink="/informes"><i class="fa fa-file"></i> informes</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav navBar-right">
+          <li *ngIf="isLogged ; else loggedOut" class="nav-item">
+            <a routerLink="/login"><button (click)="cerrar()" style="width:100px;" class="btn btn-danger"><i class="fa fa-power-off"></i></button></a>
+        </ul>
+      </div>  
+    </nav-->
+
+
+    <div id="main" *ngIf="roles[0] == 'ROLE_ADMIN' &&  'ROLE_MESERO'">
+      <div class="container container_edit">
+        <div class="pendiente">
+
+          <!--button class="btn btn-success float-md-right boton" *ngIf="roles[0] == 'ROLE_ADMIN'"
+          routerLink="/usuario">Usuario</button>
+          <button class="btn btn-success float-md-right boton" *ngIf="roles[0] == 'ROLE_ADMIN'"
+          routerLink="/caja">Caja</button-->
+          <br>
+
+
+
+
+          <div>
+            <br>
+            <accordion [isAnimated]="true">
+
+              <accordion-group heading="chicas activas" [isOpen]="open">
+                <button class="btn btn-lg btn-primary mb-2 me-2 " (click)="openModalTmasivo()">Tragos Masivos</button>
+                <div class="row" style="text-align:center;">
+         
+                  
+           
+                  
+                   
+                      
+                      <div *ngFor="let row of users" class="col-lg-2 columna">
+             
+                        <div class="card" *ngIf="row.estado === 'activo' && row.tipo === 'anfritriona'"
+                          >
+                          <app-timer-pane [userId]="row.id" (event)="handleEvent($event,row.id)"></app-timer-pane>
+                      <div class="card-header" id="clase" >
+                        {{row.nombreUsuario}}
+
+                      </div>
+                      <div class="card-body">
+                        <img *ngIf="row.estado === 'activo'" src="http://localhost:8080/api/uploads/img/{{row.foto}}"
+                          class="card-img-top" alt="..." style="width: 100px;height: 100px;">
+                      </div>
+                      <button class="btn btn-primary" (click)="openTimerChica()" >Ver tiempo</button>
+                    </div>
+                  </div>
+
+                </div>
+              </accordion-group>
+            </accordion>
+            <br>
+            <accordion [isAnimated]="true">
+
+              <accordion-group heading="Garzones Activos" [isOpen]="open">
+               
+                <div class="row" style="text-align:center;">
+                  <div *ngFor="let row of users" class="col-lg-2 columna">
+                    <div class="card" *ngIf="row.estado === 'activo' && row.tipo === 'garzon'"
+                      [routerLink]="['/pgarzon',row.nombre,row.id]">
+                      <div class="card-header" id="clase" [ngStyle]="(row.color === 'verde' && {'background-color': 'green'})
+                       || (row.color === 'amarillo' && {'background-color': 'yellow','color':'white'}) 
+
+                        || (row.color === 'rojo' && {'background-color': 'red','color':'white'})
+                        
+                        || (row.color === 'rosado' && {'background-color': '#ff0080'}) 
+                        ">
+                        {{row.nombreUsuario}}
+
+                      </div>
+                      <div class="card-body">
+                        <img *ngIf="row.estado === 'activo'" src="http://localhost:8080/api/uploads/img/{{row.foto}}"
+                          class="card-img-top" alt="..." style="width: 100px;height: 100px;">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </accordion-group>
+            </accordion>
+
+            <br>
+
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Tragos Pendientes" [isOpen]="open">
+                <button class="btn btn-primary" (click)="openModalTragosP()">Tragos Pendientes</button>
+              </accordion-group>
+            </accordion>
+
+            <br>
+
+
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Bar" [isOpen]="openi">
+                <button class="btn btn-lg btn-success mb-2 me-2" routerLink="/bar"><i class="fa fa-glass"></i>
+                  Bar</button>
+              </accordion-group>
+            </accordion>
+
+
+
+
+            <br>
+
+            <button class="btn btn-lg btn-outline-primary mb-2 me-2" (click)="openTimer(contents)">Historial de temporizadores</button>
+
+
+
+
+
+            <div class="container"></div>
+
+            <div class="cliente">
+              <div class="row">
+
+                <h2>Clientes</h2>
+                <div  *ngFor="let row of client">
+                <div *ngIf="row.estado != true"  class="col-sm-2 ">
+
+                  <button *ngIf='row.id==1' type="button" class="btn btn-success btn-lg"
+                    (click)="openModalClientes(row.id)" hidden>{{row.nombre_cliente}}</button>
+
+                  <button *ngIf='row.id!=1' type="button" class="btn btn-success btn-lg"
+                    (click)="openModalClientes(row.id)"      >{{row.nombre_cliente}}</button>
+
+
+
+                </div>
+              </div>
+              </div>
+            </div>
+            <br>
+            <!--div class="main1-container">
+            
+
+         
+             
+              <h3>Chicas Activas</h3>
+              <div  *ngFor="let row of users" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+
+
+              <!--div>                <div class="col-sm">
+                  <img *ngIf="row?.foto" src="http://localhost:8080/api/uploads/img/{{row.foto}}" alt="{{row.foto}}" class="img-thumbnail round">
+                
+
+
+
+             
+                <div  class="btn-group me-1" role="group" aria-label="First group">
+                  <table style="width: 100%;height: 100%;" >
+                    <tbody>
+                    <tr>
+                      
+                    <td><button type="button" class="btn btn-primary" *ngIf="row.estado === 'activo'" [routerLink]="['/chicas',row.id,row.nombre]">
+                      {{ row.nombre
+                      }}
+                    </button>
+                 </td><img *ngIf="row?.foto" src="http://localhost:8080/api/uploads/img/{{row.foto}}" alt="{{row.foto}}" class="img-thumbnail round">
+                 <td>  </td>
+                    </tr>
+                   
+                 
+                    </tbody>
+                    </table>
+                  
+                </div>
+            
+                
+              </div>  
+
+              
+
+
+            </div-->
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+  <!--div id="main">
+  <accordion>
+    <accordion-group heading="x" [isOpen]="open">
+      Menú de {{nombre}}
+      <div class="form-group row">
+        <form [formGroup]="datosForm" novalidate>
+
+          <label class="control-label col-sm-2" for="fecha_in">Fecha inscripcion :</label>
+          <div class="col-sm-8 col-offset-2">
+            <input type="date" class="form-control" [(ngModel)]="fecha" [ngModelOptions]="{standalone: true}"
+              name="fecha" class="form-control" id="datetimepicker">
+          </div>
+          <button type="submit" class="btn bg-primary btn-success" tooltip="Ver detalle" (click)="buscar()">
+            buscar
+          </button>
+
+        </form>
+      </div>
+
+    </accordion-group>
+  </accordion>
+
+
+</div-->
+
+
+
+
+  <ng-template #loggedOut>
+    <div class="container" style="background: black;">
+      <img class="img" src="assets\images.jpg">
+    </div>
+    <div class="text-center" style="background-color: brown;">
+      <h1 style="color:white"> Lo siento no has iniciado sesión</h1>
+      <a style="color:white" [routerLink]="['/login']">vuelva a la app con este link</a>
+    </div>
+
+  </ng-template>
+
+  <div>
+
+
+
+
+  </div>
+</div>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header bg-danger">
+    <h4 class="offcanvas-title" style="color: white;">Tragos Masivos</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <p>Chicas disponibles</p>
+      <div *ngFor="let row of users" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+
+        <div class="btn-group me-1" role="group" aria-label="First group">
+          <table style="width:200px;">
+            <tr *ngIf="row.estado === 'activo'">
+
+
+              <td> <input class="chk_sel_box chk_all_style" type="checkbox" value="{{row.id}}"
+                  (click)="enableDisable()"></td>
+              <td>{{row.id}} {{ row.nombre}}</td>
+
+            </tr>
+          </table>
+        </div>
+
+
+      </div>
+      <button type="button" [disabled]="isDisabled" #myButton style="aling-items: center;justify-content: center"
+        class="align-items-center" (click)="veinte()">$20.000</button>
+      &nbsp;
+      <button type="button" [disabled]="isDisabled" style="aling-items: center;justify-content: center"
+        class="align-items-center">$30.000</button>
+      &nbsp;
+      <button type="button" [disabled]="isDisabled" style="aling-items: center;justify-content: center"
+        class="align-items-center">$40.000</button>
+
+    </div>
+
+
+
+  </div>
+</ng-template>
+
+
+<ng-template #contents let-offcanvas>
+  <div class="offcanvas-header bg-danger">
+    <h4 class="offcanvas-title" style="color: white;">Temporizadores de tragos segun anfitrionas</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+
+  
+     
+
+
+        <div class="btn-group me-1" role="group" aria-label="First group">
+          <table style="width: 566px; float: left; height: 38px;" border="0" cellspacing="1" cellpadding="1">
+            <tbody *ngFor="let row of users">
+            <tr *ngIf="row.estado === 'activo'">
+            <td style="width: 149.758px;">&nbsp;Nombre anfitriona</td>
+            <td style="width: 119.125px;">&nbsp;tiempo restante</td>
+            <td style="width: 160.867px;">&nbsp;parar</td>
+            <td style="width: 135.25px;">&nbsp;informaci&oacute;n</td>
+            </tr>
+           
+            <td style="width: 119.125px;"> </td>
+            <td style="width: 160.867px;"></td>
+            <td style="width: 135.25px;"></td>
+            
+
+            </tbody >
+            </table>
+        </div>
+
+
+      </div>
+      
+
+    </div>
+
+
+
+
+</ng-template>

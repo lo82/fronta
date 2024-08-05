@@ -1,0 +1,117 @@
+<app-header></app-header>
+    <app-nav></app-nav>
+<div class="container container_edit">
+    <div class="card-body">
+      <div class="m-auto text-center">
+        <h3 class="card-title" style="text-align:center;">
+          Activar Garzon
+         
+        </h3>
+      </div>
+    </div>
+
+    <div *ngIf='usuarios?.length == 0' class="alert alert-info">
+      No hay registros en la base de datos!
+    </div>
+    <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;">
+        <thead>
+          <tr>
+           
+            <th>imagen</th>
+            <th>Rut</th>
+            <th>Nombre Fantasia</th>
+            <th>Primer Nombre</th>
+            <th>Segundo Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Email</th>
+            <th>Estado</th>
+            <th>Estado civil</th>
+            <th>Dirección</th>
+            <th>AFP</th>
+            <th>Imposiciones</th>
+            <th>Administrar</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let usuario of usuarios">
+          <tr *ngIf=" usuario.tipo === 'garzon' " >            
+            <td><img *ngIf="usuario?.foto" src="http://localhost:8080/api/uploads/img/{{usuario.foto}}" alt="{{usuario.foto}}" class="img-thumbnail round"
+              style="width: 64px;">
+              <img *ngIf="!usuario?.foto" src="http://localhost:8080/img/nouser.png" alt="sinfoto" class="img-thumbnail round"
+              style="width: 64px;"></td>
+              <td>{{usuario.rut}}</td>
+              <td>{{usuario.nombreUsuario}}</td>
+              <td>{{usuario.nombre}}</td>
+              <td>{{usuario.nombre_segundo}}</td>
+              <td>{{usuario.apellido}}</td>
+              <td>{{usuario.apellido_segundo}}</td>
+              <td>{{usuario.email}}</td>
+              <td>{{usuario.estado}}</td>
+              <td>{{usuario.estado_civil}}</td>
+              <td>{{usuario.direccion}}</td>
+              <td>{{usuario.afp}}</td>
+              <td>{{usuario.imposiciones}}</td>
+         
+            <td >
+              <button type="button" name="editar" [routerLink]="['/usuarios/form',usuario.id]" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+
+                <button type="button" name="editar" (click)="actualizar(usuario.id)" class="btn btn-success"><i class="fa fa-edit"></i>Activar</button>
+                &nbsp;
+                <button type="button" name="editar" (click)="aceptar(usuario.id)" class="btn btn-danger">Desactivar</button>
+                &nbsp;
+                <button type="button" name="eliminar" (click)='delete(usuario)' class="btn btn-danger"><i class="fa fa-times"></i></button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-1 col-offset-5">
+
+      <button class="btn btn-rounded btn-success perfil" routerLink="/usuarios/form"><i class="fa fa-plus fa-lg"></i><br>Crear Perfiles</button>
+  </div>
+    <br>
+</div>
+
+<accordion [isAnimated]="true">
+     
+  <accordion-group heading="Propinas del día" [isOpen]="open">
+   
+    <div class="row" style="text-align:center;">
+      <h4 class="modal-title pull-center">Seleccione los garzones</h4>
+      <div *ngFor="let row of use" >
+          <div class="card noBorde" *ngIf="row.estado === 'activo' && row.tipo === 'garzon' "  >
+            <input type="checkbox" id="chk" name="scales" class="chk_sel_box chk_all_style" value="{{row.id}}" (click)="seleccionado(row.id)" #inputBox (change)="onCategoriaPressed(row.id,inputBox?.checked)">
+            {{ row.nombre}} 
+          </div>
+      </div>
+      <h4 class="modal-title pull-left">Seleccione el Tipo de pago</h4>
+
+      <div class="modal-body">
+        <p>
+          <select name="miselect" [(ngModel)]="seleccionados" class="form-select-sm">
+            <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+          </select>
+        </p>
+        <div>
+        </div></div>
+        <div *ngIf="seleccionados">
+        <h4 class="modal-title pull-left" >Ingrese el total de las propinas</h4>
+         
+        <form [formGroup]="datosForm">
+            <div class="form-group">
+              <label for="exampleInputEmail1">valor del dia</label>
+              <br>
+              <input type="text" class="form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}" [(ngModel)]="propinaT" >
+             <br>
+              <small id="emailHelp" class="form-text text-muted">Recordar colocar el total del día en {{seleccionados}}</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary"  (click)="propinaTarjeta()">Insertar propina</button>
+        </form>
+        </div>
+
+
+      </div>
+     
+  </accordion-group>
+</accordion>
+

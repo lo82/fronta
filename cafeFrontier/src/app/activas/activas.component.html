@@ -1,0 +1,154 @@
+<div>
+  <h3>Chicas Activas</h3>
+  <div class="activas" *ngFor="let row of users" class="" aria-label="First group">
+    <tr *ngIf="row.estado === 'activo' && row.tipo=== 'anfritriona'">
+      <input type="checkbox" id="chk" name="scales" class="chk_sel_box chk_all_style" value="{{row.id}}" (click)="seleccionado(row.id)" #inputBox (change)="onCategoriaPressed(row.id,inputBox?.checked)">
+      {{ row.nombre}} 
+
+    </tr>
+
+  </div>
+
+  <h4 class="modal-title pull-left">Seleccione el Tipo de pago para el servicio</h4>
+
+  <div class="modal-body">
+    <p>
+      <select name="miselect" [(ngModel)]="seleccionados" class="form-select">
+        <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+      </select>
+    </p>
+    <div>
+      <form [formGroup]="datosForm" *ngIf="seleccionados === 'Tarjeta' " (ngSubmit)="onSubmit()">
+
+
+        <label for="fname">Valor servicio</label>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="vSer" name="vSer"
+          class="form-control" [(ngModel)]="vSer" formControlName="vSer" />
+        <div
+          *ngIf="datosForm.controls['vSer'].invalid && (datosForm.controls['vSer'].dirty || datosForm.controls['vSer'].touched)"
+          class="alert alert-danger">
+
+        </div>
+        <label for="lname">Iva:</label><br>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="iva" name="iva"
+          class="form-control" [(ngModel)]="iva" formControlName="iva" />
+        <div
+          *ngIf="datosForm.controls['iva'].invalid && (datosForm.controls['iva'].dirty || datosForm.controls['iva'].touched)"
+          class="alert alert-danger">
+
+        </div>
+        <label for="fname">Privado</label>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="vChica" name="vChica"
+          class="form-control" [(ngModel)]="vChica" formControlName="vChica" />
+        <div
+          *ngIf="datosForm.controls['vChica'].invalid && (datosForm.controls['vChica'].dirty || datosForm.controls['vChica'].touched)"
+          class="alert alert-danger">
+          <div *ngIf=" datosForm.get('vChica')?.errors?.['required']">
+            El valor del privado es requerido.
+          </div>
+        </div>
+        Habitación
+        <br>
+        <select name="pieza" id="pieza" class="form-select sm" [(ngModel)]="pieza" formControlName="pieza">
+          <option [value]="1" *ngFor="let item of listaNumeros">{{item}}</option>
+        </select>
+        <div *ngIf="isSubmitted && f['pieza'].errors" class="invalid-feedback">
+          <div *ngIf="f['pieza'].errors?.['required']">La Habitación ser completada.</div>
+        </div>
+
+
+        <br>
+        <button type="submit" class="btn btn-success bg-success" [disabled]="!datosForm.valid"
+          (click)="crearServicio()">Aceptar</button>
+        <br>
+        resultado {{resultado}}
+      </form>
+    </div>
+    <div>
+      <form [formGroup]="datoForm" *ngIf="seleccionados === 'Efectivo' " novalidate (ngSubmit)="onSubmits()">
+
+
+        <label for="fname">Valor servicio</label>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="valorServicio" name="valorServicio"
+          class="form-control" [(ngModel)]="valorServicio" formControlName="valorServicio" />
+        <div
+          *ngIf="datoForm.controls['valorServicio'].invalid && (datoForm.controls['valorServicio'].dirty || datoForm.controls['valorServicio'].touched)"
+          class="alert alert-danger">
+
+        </div>
+        <label for="lname">Valor Privado:</label><br>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="valorPrivado" name="valorPrivado"
+          class="form-control" [(ngModel)]="valorPrivado" formControlName="valorPrivado" />
+        <div
+          *ngIf="datoForm.controls['valorPrivado'].invalid && (datoForm.controls['valorPrivado'].dirty || datoForm.controls['valorPrivado'].touched)"
+          class="alert alert-danger">
+          <div *ngIf=" datoForm.get('valorPrivado')?.errors?.['required']">
+            El valor del privado es requerido.
+          </div>
+        </div>
+        Habitación
+        <br>
+        <select name="piezas" id="piezas" class="form-select sm" [(ngModel)]="piezas" formControlName="piezas">
+          <option [value]="1" *ngFor="let item of listaNumeros">{{item}}</option>
+        </select>
+        <div *ngIf="isSubmitted && ef['piezas'].errors" class="invalid-feedback">
+          <div *ngIf="ef['piezas'].errors['required']">Privado debe ser completado.</div>
+        </div>
+        <br>
+
+
+        <button type="submit" class="btn btn-success bg-success" [disabled]="!datoForm.valid"
+          (click)="crearServicioEfectivo()">Aceptar</button>
+        <br>
+        total {{total}}
+      </form>
+    </div>
+
+    <div>
+      <form [formGroup]="datForm" *ngIf="seleccionados === 'Transferencia'" novalidate (ngSubmit)="onSubmitss()">
+
+
+        <label for="fname">Valor servicio</label>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="valorServicios" name="valorServicios"
+          class="form-control" [(ngModel)]="valorServicios" formControlName="valorServicios" />
+        <div
+          *ngIf="datForm.controls['valorServicios'].invalid && (datForm.controls['valorServicios'].dirty || datForm.controls['valorServicios'].touched)"
+          class="alert alert-danger">
+
+        </div>
+        <label for="lname">Valor Privado:</label><br>
+        <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')" id="valorPrivados" name="valorPrivados"
+          class="form-control" [(ngModel)]="valorPrivados" formControlName="valorPrivados" />
+        <div
+          *ngIf="datForm.controls['valorPrivados'].invalid && (datForm.controls['valorPrivados'].dirty || datForm.controls['valorPrivados'].touched)"
+          class="alert alert-danger">
+          <div *ngIf=" datoForm.get('valorPrivados')?.errors?.['required']">
+            El valor del privado es requerido.
+          </div>
+        </div>
+        Habitación
+        <br>
+        <select name="piezass" id="piezass" class="form-select sm" [(ngModel)]="piezass" formControlName="piezass">
+          <option [value]="1" *ngFor="let item of listaNumeros">{{item}}</option>
+        </select>
+        
+        <br>
+
+
+        <button type="submit" class="btn btn-success bg-success" [disabled]="!datForm.valid"
+          (click)="crearServicioTransferencia()">Aceptar</button>
+        <br>
+        total {{result}}
+      </form>
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,83 @@
+<div *ngIf="isLogged">
+    <app-header></app-header>
+    <app-nav *ngIf="isLogged;">
+      
+    </app-nav>
+
+<h1>Propinas de {{nombre}}
+</h1>
+
+<accordion [isAnimated]="true">
+    <accordion-group heading="Gratificación">
+ 
+
+      <div class="modal-header" #modalone="bs-modal" bsModal>
+        <h4 class="modal-title pull-left">Agregue la bonificación correspondiente </h4>
+      
+      </div>
+      
+      <div class="modal-body">
+       
+        <div >
+          <form [formGroup]="datosForm" (ngSubmit)="onSubmit()">
+      
+      
+            <label for="fname">Valor Bonificación</label>
+            <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')"   id="vSer" name="vSer" class="form-control" [(ngModel)]="vSer" formControlName="vSer"/>
+            <div *ngIf="datosForm.controls['vSer'].invalid && (datosForm.controls['vSer'].dirty || datosForm.controls['vSer'].touched)" class="alert alert-danger">
+              <div *ngIf=" datosForm.get('vSer')?.errors?.['required']">
+                El valor del adelanto es requerido.
+              </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success bg-success" [disabled]="!datosForm.valid" (click)="crearBono()">Aceptar</button>
+          </form>
+        </div>
+      </div>
+      
+
+    </accordion-group>
+    <accordion-group heading="Adelanto">
+        <h3>Agregar Propinas tarjeta</h3>
+        <form [formGroup]="datosForm">
+            <div class="form-group">
+              <label for="exampleInputEmail1">valor del dia</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [ngModelOptions]="{standalone: true}" [(ngModel)]="propinaT" >
+              <small id="emailHelp" class="form-text text-muted">Recordar colocar el total del día en efectivo</small>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" (click)="propinaTarjeta()">Insertar propina</button>
+        </form>
+
+        
+    </accordion-group>
+   
+    <accordion-group heading="Propinas por usuario y por fecha">
+      <div class="modal-body">
+   
+        <div >
+          <form [formGroup]="datosForm" (ngSubmit)="onSubmit()">
+      
+      
+            <label for="fname">Valor Adelanto</label>
+            <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')"   id="vSer" name="vSer" class="form-control" [(ngModel)]="vSer" formControlName="vSer"/>
+            <div *ngIf="datosForm.controls['vSer'].invalid && (datosForm.controls['vSer'].dirty || datosForm.controls['vSer'].touched)" class="alert alert-danger">
+              <div *ngIf=" datosForm.get('vSer')?.errors?.['required']">
+                El valor del adelanto es requerido.
+              </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success bg-success" [disabled]="!datosForm.valid" >Aceptar</button>
+          </form>
+        </div>
+      </div>
+      
+      
+
+
+    </accordion-group>
+
+
+</accordion>
+</div>
+

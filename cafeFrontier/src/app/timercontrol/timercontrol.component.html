@@ -1,0 +1,6 @@
+<div>
+  <p>User: {{ userId }}</p>
+  <p>Remaining Time: {{ remainingTime$ | async }}</p>
+  <button (click)="startTimer(20)">Start 20 min Timer</button>
+  <button (click)="stopTimer()">Stop Timer</button>
+</div>

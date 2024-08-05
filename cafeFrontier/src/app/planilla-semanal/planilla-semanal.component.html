@@ -1,0 +1,498 @@
+<app-header></app-header>
+    <app-nav></app-nav>
+<div class="container container_edit">
+    <div class="card-body">
+        <div class="m-auto text-center">
+          <h3 class="card-title" style="text-align:center;">
+            Planilla deposito
+          </h3>
+        </div>
+      </div>
+<div  class="form-group row">
+  <label class="control-label col-sm-2" for="nombre" >Ingreso Fechas: </label>
+    <form >
+        <label>
+          Ingrese fecha desde:
+          <input type="date" name="fecha1" [(ngModel)]="fecha1" />
+          Ingrese fecha hasta:
+          <input type="date" name="fecha2" [(ngModel)]="fecha2"/>
+          <br>
+          chicas:
+          <select name="piezas" class="form-select sm" [(ngModel)]="usei" >
+            <option  *ngFor="let item of user" [ngValue]="item.id">{{item.nombreUsuario}}</option>
+          </select>
+        
+
+        </label>
+      </form>
+    <div class="col-sm-10 col-offset-5">
+      <button class="btn btn-success" role="button" (click)='informe()' >Buscar</button>
+  </div>
+</div>  
+
+<div id="htmlData" >
+  <br><br><br><br><br><br>  
+
+  <img class="img" src="assets\images.jpg" style="width: 90px;">
+    <div class="horizontal" >
+      <div *ngFor="let acciones of acciones">
+   
+      </div>
+      <div id="caja1" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+        {{fechas1}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomision  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicio  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20 + totalTrago30 + totalTrago40 + totalcomision + totalServicio  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelanto  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20 + totalTrago30 + totalTrago40 + totalcomision + totalServicio + adelanto  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+      <div id="caja2" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+          {{fechas2}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20F2  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{  totalTrago30F2  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40F2  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomisionF2  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{ totalServicioF2  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20F2 + totalTrago30F2 + totalTrago40F2 + totalcomisionF2 + totalServicioF2  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelanto  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20F2 + totalTrago30F2 + totalTrago40F2 + totalcomisionF2 + totalServicioF2 + adelanto  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja3" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+          {{fechas3}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20F3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30F3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40F3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomisionF3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicioF3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20F3 + totalTrago30F3 + totalTrago40F3 + totalcomisionF3 + totalServicioF3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelantoF3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20F3 + totalTrago30F3 + totalTrago40F3 + totalcomisionF3 + totalServicioF3+ adelantoF3  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja4" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+         {{fechas4}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20F4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30F4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40F4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomisionF4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicioF4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20F4 + totalTrago30F4 + totalTrago40F4 + totalcomisionF4 + totalServicioF4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelantoF4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20F4 + totalTrago30F4 + totalTrago40F4 + totalcomisionF4 + totalServicioF4 + adelantoF4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+      <div id="caja5" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+  {{fechas5}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-g1fv">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20F5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30F5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40F5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomisionF5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicioF5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20F5+ totalTrago30F5 + totalTrago40F5 + totalcomisionF5 + totalServicioF5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelantoF5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20F5 + totalTrago30F5 + totalTrago40F5 + totalcomisionF5 + totalServicioF5 + adelantoF5  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja6" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+          {{fechas6}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{ totalTrago20F6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30F6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40F6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomisionF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicioF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20F6 + totalTrago30F6 + totalTrago40F6 + totalcomisionF6 + totalServicioF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelantoF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20F6 + totalTrago30F6 + totalTrago40F6 + totalcomisionF6 + totalServicioF6 + adelantoF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja7" *ngIf="bol"> 
+        
+        <table  class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+            {{fechas7}}
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{totalTrago20F7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30F7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40F7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomisionF7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicioF7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20F7+totalTrago30F7+totalTrago40F7+totalcomisionF7+totalServicioF7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelantoF7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td class="tg-0pky">{{totalTrago20F7+totalTrago30F7+totalTrago40F7+totalcomisionF7+totalServicioF7+adelantoF7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja8" *ngIf="bol"> 
+        
+        <table  class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 100px">
+          <col style="width: 100px">
+          </colgroup>
+          <thead>
+        <h5 style="background-color: brown;color:white">Total Semana</h5> 
+            <tr>
+              <th class="tg-g1fv" colspan="2">Anfitriona:{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">7.000X</td>
+              <td class="tg-0pky">{{totalTrago20 + totalTrago20F2 +totalTrago20F3+totalTrago20F4+totalTrago20F5+ totalTrago20F6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">10.000X</td>
+              <td class="tg-0pky">{{totalTrago30+totalTrago30F2+totalTrago30F3+totalTrago30F4+totalTrago30F5+totalTrago30F6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">15.000X</td>
+              <td class="tg-0pky">{{totalTrago40+totalTrago40F2+totalTrago40F3+totalTrago40F4+totalTrago40F5+totalTrago40F6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Comision Champaña</td>
+              <td class="tg-0pky">{{totalcomision+totalcomisionF2+totalcomisionF3+totalcomisionF4+totalcomisionF5+totalcomisionF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Servicio</td>
+              <td class="tg-0pky">{{totalServicio+totalServicioF2+totalServicioF3+totalServicioF4+totalServicioF5+totalServicioF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{totalTrago20 + totalTrago20F2 +totalTrago20F3+totalTrago20F4+totalTrago20F5+ totalTrago20F6+totalTrago30+totalTrago30F2+totalTrago30F3+totalTrago30F4+totalTrago30F5+totalTrago30F6+totalTrago40+totalTrago40F2+totalTrago40F3+totalTrago40F4+totalTrago40F5+totalTrago40F6+totalServicio+totalServicioF2+totalServicioF3+totalServicioF4+totalServicioF5+totalServicioF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Adelanto</td>
+              <td class="tg-0pky">{{adelanto+adelantoF2+adelantoF3+adelantoF4+adelantoF5+adelantoF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Neto</td>
+              <td style="background-color:yellow;color:black"   class="tg-0pky">{{totalTrago20 + totalTrago20F2 +totalTrago20F3+totalTrago20F4+totalTrago20F5+ totalTrago20F6+totalTrago30+totalTrago30F2+totalTrago30F3+totalTrago30F4+totalTrago30F5+totalTrago30F6+totalTrago40+totalTrago40F2+totalTrago40F3+totalTrago40F4+totalTrago40F5+totalTrago40F6+totalServicio+totalServicioF2+totalServicioF3+totalServicioF4+totalServicioF5+totalServicioF6+adelanto+adelantoF2+adelantoF3+adelantoF4+adelantoF5+adelantoF6  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+
+    </div>
+  
+</div>
+  
+<div>
+  <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
+</div>
+
+<div class="col-sm-1 col-offset-5">
+  <button class="btn btn-secondary" (click)='volver()' role="button">Volver</button>
+</div>

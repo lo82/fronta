@@ -1,0 +1,93 @@
+<table class="table table-striped text-center text-align">
+  <thead>
+    <tr>
+      <th></th>
+      <th>chica</th>
+      <th>fecha</th>
+      <th>descripción</th>
+      <th>Cantidad</th>
+      <th>precio</th>
+      <th>Garzon venta</th>
+      <th>Pagar</th>
+      <th>Cancelar</th>
+
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let accion of accione ">
+    <tr *ngIf="accion.estado == 'pendiente'  " >
+
+      <td style="text-align:center;"><input class="chk_sel_box chk_all_style" type="checkbox"
+          [(ngModel)]="accion.checked" [checked]="idecito" (click)="seleccionid(accion.usuario.id)"
+          (keypress)="seleccionado(accion.id)" value="{{accion.id}}" id="numero" #inputBox
+          (change)="onCategoriaPressed(accion.total_ganado,inputBox?.checked)" ></td>
+      <td>{{accion.usuario !=undefined ? accion.usuario.nombre:'' }}</td>
+      <td>{{accion.fecha_dia}}</td>
+      <td>{{accion.tragos !=undefined ? accion.tragos.nombre_trago:'' }}</td>
+      <td>{{accion !=undefined ? accion.cantidad:''}}</td>
+      <td>{{accion.total_ganado}}</td>
+        <td>{{accion.garzon!=undefined?accion.garzon.nombre_garzon:''}}</td>
+      <td>
+
+
+        <button class="btn btn-success bg-sucesss" tooltip="Ver detalle" (click)="openModalPendiente(accion.id)">
+          Pagar
+        </button>
+
+      </td>
+      <td>
+        <button class="btn btn-danger bg-danger" tooltip="Ver detalle" (click)="cancelarTrago(accion.id)">
+          Cancelar
+        </button>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+____________________________________________________________________________________________
+<h2>total:{{total2}}</h2>
+<div>
+  <br><button class="btn btn-primary" (click)="openModalTragosP()" role="button">Pagar</button>
+  
+  <br><br>
+<div *ngIf="pagar == true">
+
+  <h4 class="modal-title pull-left">Seleccione el Tipo de pago</h4>
+  
+
+
+<div class="modal-body">
+
+  <div >
+    
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button class="btn btn-danger bg-primary" (click)="tarjeta()"  > Tarjeta</button>  
+    &nbsp;&nbsp;&nbsp;
+    
+    <button class="btn btn-danger bg-primary" (click)="efectivo()" >Efectivo</button>  
+    &nbsp;&nbsp;&nbsp;
+
+    <button class="btn btn-danger bg-primary" (click)="transferencia()" >Transferencia</button>  
+    &nbsp;&nbsp;&nbsp;
+  </div>
+  <div>
+   
+
+      
+     
+ 
+  </div>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+

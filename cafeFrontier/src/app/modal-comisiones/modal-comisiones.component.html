@@ -1,0 +1,76 @@
+<div class="container container_edit">
+  <h3  class="card-title" style="text-align:center;">
+     Comisiones 
+    </h3>
+     <br></div>
+  <div class="card-body">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm">
+                  <ul *ngIf="usuario" class="list-group text-dark mb-3">
+                    <li class="list-group-item">Fecha :  {{ fechaf1}}</li>
+                      <li class="list-group-item">Nombre :  {{ usuario.nombre}}</li>
+                      <li class="list-group-item">Apellido :  {{ usuario.apellido}}</li>
+                      <li class="list-group-item">Estado :  {{ usuario.estado}}</li>
+                  </ul>
+                  <h3  class="card-title" style="text-align:center;">
+                    Tragos 
+                   </h3>
+                  <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;">
+                      <thead>
+                        <tr>
+                          <th>Valor Trago</th>
+                          <th>Hora</th>
+                          
+                          
+                      
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let informe of informe">
+                          <td>{{informe.tipo_accion}}</td>
+                     
+                          <td>{{informe.servicio.valor}}</td>
+                          
+                        </tr>
+                      </tbody>
+                  </table>
+                  <h3  class="card-title" style="text-align:center;">
+                    Comisiones 
+                   </h3>
+
+                  <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;" >
+                      <thead>
+                        <tr>
+                          <th>Adelanto</th>
+                          <th>Bonificación</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let acciones of acciones">
+                          <td>{{comisiones}}</td>
+                          <td>{{adelanto}}</td>
+                        </tr>
+                      </tbody>
+                  </table>
+
+                  <br>
+                  <h3  class="card-title" style="text-align:center;">
+                    Servicios 
+                   </h3>
+                  <div class="card text-center border-info">
+                    <div class="card-body">
+                      <h1  class="card-title">Total a Pagar = {{totalpagar}}</h1>
+                    </div>
+                  </div> 
+                  <div class="input-group">
+                    
+                 
+              </div>
+              </div>
+              
+            
+              
+          </div>
+      </div>
+</div>

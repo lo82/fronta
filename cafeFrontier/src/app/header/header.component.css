@@ -1,0 +1,24 @@
+.navbar{
+    background-color: gold;
+    height: 2px;
+  
+}
+
+.img{
+    position: relative;
+    background-repeat: no-repeat;
+background-position: 50%;
+border-radius: 50%;
+background-size: 100% auto;
+border: solid #FFD700 5px;
+backdrop-filter: blur(30px);
+bottom:20px;
+top:50px;
+left:720px;
+box-shadow: 0 0 40px white;
+}
+
+.posicion{
+    position:relative;
+    bottom: 10px;
+}

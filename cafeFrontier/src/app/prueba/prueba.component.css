@@ -1,0 +1,21 @@
+.riders {
+    width: 800px;
+    min-width: 340px;
+    margin: 0 auto;
+  }
+  
+  .riders-panel {
+    width: 800px;
+    min-width: 340px;
+    height: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #ccc;
+  }
+  
+  .riders-panel.disabled {
+    opacity: 0.3;
+  }

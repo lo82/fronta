@@ -1,0 +1,14 @@
+<h1>Asistencia</h1>
+<br>
+
+<form [formGroup]="datosForm" class="text-center">
+    <label for="fname">Ingrese Valor</label><br>
+    <input type="text" [(ngModel)]="valor" [ngModelOptions]="{standalone: true}" ><br>
+    
+
+<br>
+    <input class="btn btn-success bg-success" type="submit" value="Si" (click)="aceptar()" >
+    &nbsp;
+    <input class="btn btn-danger bg-danger" type="submit" value="No" (click)="modalRef.hide()">
+  </form> 
+

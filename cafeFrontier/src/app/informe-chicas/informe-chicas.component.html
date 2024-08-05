@@ -1,0 +1,58 @@
+<div class="container container_edit">
+    <div class="card-body">
+        <div class="m-auto text-center">
+          <h3 class="card-title" style="text-align:center;">
+            Listado de Informes
+          </h3>
+        </div>
+      </div>
+<div class="form-group row">
+  <label class="control-label col-sm-2" for="nombre" >Ingreso Fechas: </label>
+    <form action="https://example.com">
+        <label>
+          Ingrese fecha desde:
+          <input type="date" name="fecha1" [(ngModel)]="fecha1" />
+          Ingrese fecha hasta:
+          <input type="date" name="fecha2" [(ngModel)]="fecha2"/>
+          seleccione la chica
+          <select [(ngModel)]="id" class="form-control" id="usuario" name="usuario" required>
+            
+            <option  *ngFor="let usuario of usuarios" [ngValue]="usuario.id" value="usuario.id" >{{usuario.id}} | {{usuario.rut}} | {{usuario.nombre}}  {{usuario.apellido}}</option>
+            
+
+        </select>
+        </label>
+      </form>
+    <div class="col-sm-10 col-offset-5">
+      <button class="btn btn-success" role="button" (click)='traerinformechica()' >Buscar</button>
+  </div>
+</div>  
+
+<table id="htmlData" datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;" >
+    <thead>
+      <tr>
+        <th>Detalle</th>
+        <th>Fecha</th>
+        <th>Comisiones</th>
+        <th>Adelanto</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let acciones of acciones">
+        <td>{{acciones.tipo_accion}}</td>
+        <td>{{acciones.fecha_dia | date:"EEEE dd, MMMM yyyy"}}</td>
+        <td>{{acciones.comisiones}}</td>
+        <td>{{acciones.adelanto}}</td>
+ 
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
+  </div>
+  
+<div class="col-sm-1 col-offset-5">
+  <button class="btn btn-secondary" (click)='volver()' role="button">Volver</button>
+</div>
+</div>

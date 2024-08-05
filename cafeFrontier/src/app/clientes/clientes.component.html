@@ -1,0 +1,85 @@
+
+<table class="table table-striped text-center text-align">
+    <thead>
+      <tr>
+        <th></th>
+        <th>precio</th>
+        <th>comision</th>
+        <th>cantidad</th>
+        <th>chica</th>
+        <th>fecha</th>
+        <th>descripción</th>
+        <th>Cliente</th>
+        <th>Cancelar</th>
+        
+        
+      </tr>
+     
+    </thead>
+
+    <tbody *ngFor="let acc of action, let i = index">
+    
+      <tr >
+        
+        <td style="text-align:center;"><input class="chk_sel_box chk_all_style" type="checkbox" [checked]="all"  [(ngModel)]="acc.checked"  (click)="seleccionid(acc.usuario.id)" value="{{acc.id}}" (change)="seleccion(acc.tragos.valor_trago)"#inputBox
+          (change)="onCategoriaPressed(acc.total_ganado,inputBox?.checked)" ></td>
+          <td>{{acc.tragos.valor_trago}}</td>
+          <td>{{acc.comisiones}}</td>
+          <td>{{acc.cantidad}}</td>
+        <td>{{acc.usuario !=undefined ? acc.usuario.nombre:'' }}</td>
+        <td>{{acc.fecha_dia}}</td>
+        <td>{{acc.tragos !=undefined ? acc.tragos.nombre_trago:'' }}</td>
+        <td>{{acc.cliente !=undefined ? acc.cliente.nombre_cliente:'' }}</td>
+        <td>
+          <button class="btn btn-danger bg-danger" tooltip="Ver detalle" (click)="cancelarTrago(acc.id)">
+            Cancelar
+          </button>
+        </td>
+         
+
+        
+      </tr>
+    
+    </tbody>
+  </table>
+
+
+<h2>total:{{total}}</h2>
+
+  <br><button class="btn btn-primary" (click)="guardar()"    role="button">Pagar</button><br><br>
+  <button class="btn btn-danger" (click)="calcularTotal()">Calcular Total</button>
+
+  <div *ngIf="pagar == true">
+
+    <h4 class="modal-title pull-left">Seleccione el Tipo de pago</h4>
+    
+  
+  
+  <div class="modal-body">
+  
+    <div >
+      
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-danger bg-primary" (click)="tarjeta()" > Tarjeta</button>  
+      &nbsp;&nbsp;&nbsp;
+      
+      <button class="btn btn-danger bg-primary" (click)="efectivo()" >Efectivo</button>  
+      &nbsp;&nbsp;&nbsp;
+  
+      <button class="btn btn-danger bg-primary" (click)="transferencia()" >Transferencia</button>  
+      &nbsp;&nbsp;&nbsp;
+    </div>
+    <div>
+     
+  
+        
+       
+   
+    </div>
+  </div>
+  
+  
+  
+  
+  </div>

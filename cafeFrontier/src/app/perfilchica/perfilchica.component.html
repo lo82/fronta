@@ -1,0 +1,72 @@
+<div class="container container_edit">
+        <h3  class="card-title" style="text-align:center;">
+            Detalle Usuario
+          </h3>
+           <br></div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <ul *ngIf="usuario" class="list-group text-dark mb-3">
+                            <li class="list-group-item">Nombre :  {{ usuario.nombre}}</li>
+                            <li class="list-group-item">Apellido :  {{ usuario.apellido}}</li>
+                            <li class="list-group-item">Estado :  {{ usuario.estado}}</li>
+                        </ul>
+                        <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;">
+                            <thead>
+                              <tr>
+                                <th>Trago</th>
+                                <th>Valor Trago</th>
+                                <th>Valor Servicio</th>
+                                <th>Comisiones</th>
+                                <th>Adelanto</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let informe of informe">
+                                <td>{{informe.tipo_accion}}</td>
+                                <td>{{informe.tragos.valor_trago}}</td>
+                                <td>{{informe.servicio.valor}}</td>
+                                <td>{{informe.comisiones}}</td>
+                                <td>{{informe.adelanto}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <table datatable class="table table-striped" style="font-size:14px;border:solid 1px #CFCFCF;text-align:center;" >
+                            <thead>
+                              <tr>
+                                <th>Comisiones</th>
+                                <th>Adelanto</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let acciones of acciones">
+                                <td>{{comisiones}}</td>
+                                <td>{{adelanto}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class="card text-center border-info">
+                          <div class="card-body">
+                            <h1  class="card-title">Total a Pagar = {{totalpagar}}</h1>
+                          </div>
+                        </div> 
+                        <div class="input-group">
+                            <div class="custom-file">
+                            <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <label class="custom-file-label" for="inputGroupFileAddon04">Seleccionar Foto</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button (click)="subirFoto()" [disabled]="!fotoSeleccionada" class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Subir</button>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <div class="col-sm">
+                        <img *ngIf="usuario?.foto" src="http://localhost:8080/api/uploads/img/{{usuario.foto}}" class="img-thumbnail rounded">
+                    </div>
+                    
+                </div>
+            </div>
+</div>

@@ -1,0 +1,50 @@
+<app-header></app-header>
+    <app-nav ></app-nav>
+
+<h2>Clientes</h2>
+<div *ngFor="let acc of client, let i = index">
+
+
+<accordion *ngIf="acc.nombre_cliente != 'seleccione' " [isAnimated]="true">
+
+             <accordion-group (click)="seleccionado(acc.id)"     heading={{acc.nombre_cliente}} [isOpen]="open">
+
+               <table class="table table-striped text-center text-align">
+                   <thead>
+                     <tr>
+                       <th></th>
+                       <th>chica</th>
+                       <th>Cliente</th>
+                       <th>Estado</th>
+                       <th>tipo de pago</th>
+                       <th>fecha</th>
+                       <th>descripción</th>
+                       <th>precio</th>
+
+
+                     </tr>
+                   </thead>
+
+                   <tbody *ngFor="let acc of acci, let i = index">
+                     <tr *ngIf="acc.estado_de_pago === 'pendiente' || acc.estado_de_pago ==='pagado'">
+                       <td ></td>
+                       <td>{{acc.usuario !=undefined ? acc.usuario.nombre:'' }}</td>
+                       <td>{{acc.cliente !=undefined ? acc.cliente.nombre_cliente:'' }}</td>
+                        <td>{{acc.estado }}</td>
+                        <td>{{acc.tipo_pago}}</td>
+                       <td>{{acc.fecha_dia}}</td>
+                       <td>{{acc.tragos !=undefined ? acc.tragos.nombre_trago:'' }}</td>
+                       <td>{{acc.tragos.valor_trago}}</td>
+
+
+
+                     </tr>
+                   </tbody>
+               
+                 </table>
+                 <button class="btn btn-danger" (click)="calcularTotal()">CALCULAR TOTAL</button>  
+                 total:{{total}}
+
+             </accordion-group>
+           </accordion>
+</div>

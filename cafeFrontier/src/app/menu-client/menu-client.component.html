@@ -1,0 +1,25 @@
+<p>¿Qué cliente desea agregar a la venta?</p>
+
+<select name="miselect" [(ngModel)]="seleccionados" class="form-select sm">
+    <option [value]="item" *ngFor="let item of client" [value]="item.id">{{item.nombre_cliente}}</option>
+  </select>
+
+<br><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button class="btn btn-primary bg-primary" (click)="trein()">Aceptar</button>
+
+<br><br><br>
+
+
+<div *ngIf="treint == true">
+
+  <h4 class="modal-title pull-left">Seleccione el lugar donde van a estar</h4>
+  <select name="piezas" id="piezas" class="form-select sm" [(ngModel)]="pies" >
+    <option [value]="item" *ngFor="let item of listaNumeros">{{item}}</option>
+  </select>
+
+
+  <button type="button" style="aling-items: center;justify-content: center" class="align-items-center btn btn-danger bg-danger"  (click)="guardar()" >$30.000</button>
+  &nbsp;
+
+
+</div>

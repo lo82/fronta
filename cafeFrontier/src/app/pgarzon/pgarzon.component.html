@@ -1,0 +1,495 @@
+
+    <app-header></app-header>
+    <app-nav>
+    </app-nav>
+<div class="container container_edit">
+    <div class="card-body">
+        <div class="m-auto text-center">
+          <h3 class="card-title" style="text-align:center;">
+            Planilla Propina Garzones
+          </h3>
+        </div>
+      </div>
+<div  class="form-group row">
+  <label class="control-label col-sm-2" for="nombre" >Ingreso Fechas: </label>
+    <form >
+        <label>
+          Ingrese fecha desde:
+          <input type="date" name="fecha1" [(ngModel)]="fecha1" />
+          Ingrese fecha hasta:
+          <input type="date" name="fecha2" [(ngModel)]="fecha2"/>
+          <br>
+          
+        
+
+        </label>
+      </form>
+    <div class="col-sm-10 col-offset-5">
+      <button class="btn btn-success" role="button" (click)='informe()' >Buscar</button>
+  </div>
+</div>  
+
+<div id="htmlData" >
+  <br><br><br><br><br><br>  
+
+  <img class="img" src="assets\images.jpg" style="width: 90px;">
+    <div class="horizontal" >
+      <div *ngFor="let acciones of acciones">
+   
+      </div>
+      <div id="caja1" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+        
+          </colgroup>
+          <thead>
+    
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br>
+                {{fechas1}}
+            </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf1E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf1T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{-adelantof1 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf1 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf1 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf1E + propinaf1T-(adelantof1)+graf1+ impf1  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+      <div id="caja2" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+       
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br>   {{fechas2}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf2E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf2T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+           
+              <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{ -adelantof2 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf2 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf2 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf2E + propinaf2T  - (adelantoF2) + graf2 + impf2| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja3" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+         
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br> {{fechas3}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf3E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf3T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{ -adelantof3 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf3 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf3 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf3E + propinaf3T - (adelantoF3) + graf3 + impf3| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja4" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+        
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br> {{fechas4}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf4E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf4T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{ -adelantof4 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf4 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf4 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf4E + propinaf4T - (adelantoF4) + graf4 + impf4  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+      <div id="caja5" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br>  {{fechas5}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf5E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf5T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{ -adelantof5 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf5 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf5 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf5E + propinaf5T -(adelantoF5) + graf5 + impf5| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja6" *ngIf="bol"> 
+        
+        <table id="tg-SgBHZ" class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+     
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br>     {{fechas6}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf6E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf6T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{ -adelantof6 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf6 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf6 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf6E + propinaf6T -(adelantoF6) + graf6 +impf6 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja7" *ngIf="bol"> 
+        
+        <table  class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 300px">
+          <col style="width: 300px">
+          </colgroup>
+          <thead>
+        
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br>    {{fechas7}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="tg-266k">Asistencia</td>
+                <td class="tg-0pky"></td>
+              </tr>
+            <tr>
+              <td class="tg-266k">Pro. Efectivo</td>
+              <td class="tg-0pky">{{propinaf7E| currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Pro. Tarjeta</td>
+              <td class="tg-0pky">{{ propinaf7T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Adelanto</td>
+                <td class="tg-0pky">{{ -adelantof7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Imposiciones</td>
+                <td class="tg-0pky">{{ impf7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Hora extra</td>
+                <td class="tg-0pky">{{ graf7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr> 
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td class="tg-0pky">{{propinaf7E + propinaf7T -(adelantof7) + graf7 + impf7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+      <div id="caja8" *ngIf="bol"> 
+        
+        <table  class="table"  *ngIf="bol">
+          
+          <colgroup>
+          <col style="width: 100px">
+          <col style="width: 100px">
+          </colgroup>
+          <thead>
+        <h5 style="background-color: brown;color:white">Total Semana</h5> 
+            <tr>
+              <th class="tg-g1fv" colspan="2">{{nombre}}<br></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tg-266k">Asistencia</td>
+              <td class="tg-0pky"></td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Efectivo</td>
+              <td class="tg-0pky">{{ propinaf1E +propinaf2E +propinaf3E+propinaf4E+propinaf5E+propinaf6E+propinaf7E | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+              <td class="tg-0pky">Total Tarjeta</td>
+              <td class="tg-0pky">{{propinaf1T+propinaf2T+propinaf3T+propinaf4T+propinaf5T+propinaf6T+propinaf7T | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="tg-0pky">Total Adelanto</td>
+                <td class="tg-0pky">{{ adelantof1 -adelantof2 -adelantof3 - adelantof4 -adelantof5 -adelantof6 - adelantof7  | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Total Imposiciones</td>
+                <td class="tg-0pky">{{ impf1+impf2+impf3+impf4+impf5+impf6+impf7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>
+              <tr>
+                <td class="tg-0pky">Total Hora extra</td>
+                <td class="tg-0pky">{{ graf1 +graf2 + graf3 + graf4 + graf5 + graf6 + graf7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+              </tr>  
+            <tr>
+              <td class="tg-0pky">Total</td>
+              <td style="background-color:yellow;color:black"   class="tg-0pky">{{ propinaf1E +propinaf2E +propinaf3E+propinaf4E+propinaf5E+propinaf6E+propinaf7E+propinaf1T+propinaf2T+propinaf3T+propinaf4T+propinaf5T+propinaf6T+propinaf7T -(adelantof1 +adelantof2 +adelantof3 + adelantof4 +adelantof5 +adelantof6 + adelantof7) + graf1 +graf2 + graf3 + graf4 + graf5 + graf6 + graf7 + impf1 +impf2+impf3+impf4+impf5+impf6+impf7 | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+            </tr>
+          </tbody>
+          </table>
+
+      </div>
+
+
+    </div>
+  
+</div>
+  
+<div>
+  <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
+</div>
+
+<div class="col-sm-1 col-offset-5">
+  <button class="btn btn-secondary" (click)='volver()' role="button">Volver</button>
+</div>
+
+
+<accordion [isAnimated]="true">
+    <accordion-group heading="Hora extra y Adelanto">
+      <button type="button" class="btn btn-primary" (click)="openModalGratificacion(template)">Hora extra</button>
+      <br><br>
+      <button type="button" class="btn btn-primary" (click)="openModalAdelanto(templates)">Adelanto</button>
+    </accordion-group>
+  </accordion>
+  
+  
+  
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Hora extra</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="datosForm" (ngSubmit)="onSubmit()">
+  
+  
+            <label for="fname">Valor Hora extra</label>
+            <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')"   id="vSer" name="vSer" class="form-control" [(ngModel)]="vSer" formControlName="vSer"/>
+            <div *ngIf="datosForm.controls['vSer'].invalid && (datosForm.controls['vSer'].dirty || datosForm.controls['vSer'].touched)" class="alert alert-danger">
+              <div *ngIf=" datosForm.get('vSer')?.errors?.['required']">
+                El valor de la Gratificacion es requerido.
+              </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success bg-success" [disabled]="!datosForm.valid" (click)="crearBono()">Aceptar</button>
+          </form>
+    </div>
+  </ng-template>
+  
+  <ng-template #templates>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Adelanto</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="datoForm" (ngSubmit)="onSub()">
+  
+  
+            <label for="fname">Valor Adelanto</label>
+            <input type="number" oninput="this.value=this.value.replace(/[^\d]/,'')"   id="adelan" name="adelan" class="form-control" [(ngModel)]="adelan" formControlName="adelan"/>
+            <div *ngIf="datoForm.controls['adelan'].invalid && (datoForm.controls['adelan'].dirty || datoForm.controls['adelan'].touched)" class="alert alert-danger">
+              <div *ngIf=" datoForm.get('adelan')?.errors?.['required']">
+                El valor de la Gratificacion es requerido.
+              </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-success bg-success" [disabled]="!datoForm.valid" (click)="adelantt()">Aceptar</button>
+          </form>
+    </div>
+  </ng-template>

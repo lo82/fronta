@@ -1,0 +1,54 @@
+<nav class="navbar-expand-sm navbar-color"   >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="itm_men nav-item active">
+            <a *ngIf="authority === 'admin'|| authority ==='mesero'" class="itm_a nav-link" style="color: white;" routerLink="/home"><i class="fa fa-home"></i> Home</a>
+          </li>
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'admin'" class="itm_a nav-link" style="color: white;" routerLink="/usuario"><i class="fa fa-user-circle"></i> Chicas</a>
+        </li>
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'admin'|| authority ==='chica' || authority ==='mesero'" class="itm_a nav-link" style="color: white;" routerLink="/usuariochica"><i class="fa fa-user-circle"></i> Meseros</a>
+        </li>
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'admin'|| authority ==='chica' || authority ==='mesero'" class="itm_a nav-link" style="color: white;" routerLink="/clientes"><i class="fa fa-user-circle"></i> Clientes</a>
+        </li>
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'admin' "class="itm_a nav-link" style="color: white;" routerLink="/caja"><i class="fa fa-cash-register"></i> Caja</a>
+        </li>
+      
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'admin'|| authority ==='chica'" class="itm_a nav-link" style="color: white;" routerLink="/informes"><i class="fa fa-file"></i> Planilla</a>
+        </li>        
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'admin'|| authority ==='chica'" class="itm_a nav-link" style="color: white;" routerLink="/planilladep"><i class="fa fa-file"></i> Planilla deposito</a>
+        </li>  
+
+        <li class="itm_men nav-item active">
+          <a *ngIf="authority === 'chica'" class="itm_a nav-link" style="color: white;" routerLink="/vistas"><i class="fa fa-file"></i> Cuenta Diaria</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navBar-right">
+        <li *ngIf="isLogin" class="nav-item boton">
+          <a routerLink="/login"><button (click)="logOut()" style="width:100px;" class="btn btn-danger"><i class="fa fa-power-off"></i></button></a>
+      </ul>
+      
+
+      <div class="mover" *ngIf="authority === 'admin'" >
+        <h3 style="color: antiquewhite;">Crear Cliente</h3>
+        <form [formGroup]="clienteForm" (ngSubmit)="submit()">
+         <br>
+         <input type="text" id="fname" name="fname" formControlName="cliente" [(ngModel)]="cliente" required><br>
+         <br>
+         <input type="submit" value="Crear" class="btn btn-success" [disabled]="!clienteForm.valid" (click)="crearCliente()">
+
+       </form>
+
+       </div>
+    </div>
+    <div class="colorea"> &nbsp;<span></span></div>
+
+  </nav>

@@ -1,0 +1,125 @@
+.main1-container {
+    display: inline-flex;
+    width: 30%;
+    text-align: center;
+  }
+  
+  .main1-container div {
+    width: 40%;
+   
+  }
+  
+  .s {
+    font-size: 30px;
+    color: black;
+    background-color: #c4c4c4cd;
+    padding: 20px;
+    margin: 0 auto;
+    border-bottom: 2px solid rgb(8, 7, 4);
+    border-top: 2px solid rgb(8, 7, 4);
+   
+    
+  }
+  
+  .a {
+    
+    margin-top: 4em;
+    margin-bottom: 7em;
+  }
+  
+  .x {
+    background-color: rgb(4, 108, 194);
+    padding: 15px 75px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+  
+  .x:hover {
+    background-color: #333;
+    transition: ease .25s;
+    color: rgb(231, 46, 216);
+  }
+
+  .navbar-color{
+    background-color: black;
+
+  }
+
+h3{
+
+  font-size: 25px;
+  text-align: center;
+  height: 10px;
+
+
+
+
+}
+
+
+
+li {
+  margin: 0 .75rem;
+}
+
+.columna{
+  padding:4% 2rem ;
+}
+.tarjeta{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  width:420px;
+  border: 1px solid lightgray;
+  box-shadow: 2px 2px 8px 4px #d3d3d3d1;
+  border-radius:15px;
+  font-family: sans-serif;
+}
+.titulo{
+  font-size: 24px;
+  padding: 10px 10px 0 10px;;
+}
+.cuerpo{
+  padding: 10px;
+}
+.pie{
+  background: #6699ff;
+  border-radius:0 0 15px 15px;
+  padding: 10px;
+  text-align:center;
+}
+.pie a{
+  text-decoration: none;
+  color: white;
+}
+.pie a:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: ""
+}
+
+.derecha {
+  position: relative;
+
+}
+
+.mover{
+  position:relative;
+  left: 230px;
+}
+
+.colorea{
+  background-color: gold;
+  height: 7px;
+
+}
+
+
+.boton{
+  position: relative;
+  left: 100px;
+}

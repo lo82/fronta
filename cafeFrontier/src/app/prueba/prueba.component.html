@@ -1,0 +1,16 @@
+<div id="dealerContainer${dealer.id}" class="riders-panel">
+    <div class="container">
+      <h3>${dealer.time}</h3>
+    </div>
+
+    <div class="container">
+      <p>#${dealer.id}</p>
+    </div>
+    
+    <div class="container">
+      <button class="btn active" 
+              dealer-id="${dealer.id}"
+              onclick="handleClick(event)"
+      >${dealer.status}</button>
+    </div>
+  </div>
